@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Connect — ICB Batam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+  /* ── Connect page specific styles ── */
+  .connect-hero {
+    padding: clamp(120px, 16vw, 180px) 0 clamp(60px, 8vw, 100px);
+    background: var(--dark);
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .connect-hero .section-label { display: block; margin-bottom: 1rem; }
+  .connect-hero h1 {
+    font-family: var(--font-d);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.0;
+    margin-bottom: 1.4rem;
+  }
+  .connect-hero p {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.75;
+  }
+
+  /* ── Connect cards ── */
+  .connect-section {
+    background: var(--black);
+    padding: clamp(70px, 9vw, 120px) 0;
+  }
+  .connect-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 3rem;
+  }
+  /* 5th card spans full width on its own row */
+  .connect-card:last-child {
+    grid-column: 1 / -1;
+    border-top: 1.5px solid var(--border);
+  }
+  .connect-card {
+    background: var(--dark);
+    padding: 2.4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: background 0.3s;
+  }
+  .connect-card:hover { background: var(--mid); }
+  .connect-card-icon {
+    font-size: 2rem;
+    margin-bottom: 0.4rem;
+  }
+  .connect-card-title {
+    font-family: var(--font-d);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .connect-card-desc {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    flex: 1;
+  }
+  .connect-card-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--wave);
+    font-weight: 500;
+    text-decoration: none;
+    transition: letter-spacing 0.2s;
+  }
+  .connect-card-link:hover { letter-spacing: 0.22em; }
+  .connect-card-time {
+    margin-top: 0.8rem;
+    font-size: 0.82rem;
+    color: var(--wave);
+    letter-spacing: 0.04em;
+    font-weight: 400;
+  }
+
+  /* ── Contact / Get in touch section ── */
+  .contact-section {
+    background: var(--dark2);
+    padding: clamp(70px, 9vw, 120px) 0;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .contact-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .contact-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+  .contact-item-icon {
+    font-size: 1.4rem;
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+  }
+  .contact-item-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--steel-light);
+    margin-bottom: 0.3rem;
+  }
+  .contact-item-value {
+    font-family: var(--font-d);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  /* ── Simple contact form ── */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .form-group label {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--steel-light);
+    font-weight: 500;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: var(--mid);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.75rem 1rem;
+    color: var(--text);
+    font-family: var(--font-b);
+    font-size: 0.9rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--steel);
+  }
+  .form-group select option { background: var(--mid); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-submit { margin-top: 0.4rem; }
+
+  @media (max-width: 960px) {
+    .connect-grid { grid-template-columns: 1fr; background: none; border: 1px solid var(--border); }
+    .connect-card + .connect-card { border-top: 1px solid var(--border); }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar" class="scrolled">
+  <a href="index.html" class="nav-logo"><img src="icb-logo.png" alt="ICB"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html#location">Location</a></li>
+    <li><a href="index.html#give">Giving</a></li>
+    <li><a href="connect.html" style="color:var(--wave)">Connect</a></li>
+    <li><a href="index.html#events">Events</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#connect">Serving</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#location" class="ml">Location</a>
+  <a href="index.html#give" class="ml">Giving</a>
+  <a href="connect.html" class="ml">Connect</a>
+  <a href="index.html#events" class="ml">Events</a>
+  <a href="index.html#about" class="ml">About</a>
+  <a href="index.html#connect" class="ml">Serving</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="connect-hero reveal">
+  <div class="container">
+    <span class="section-label">Get Involved</span>
+    <h1>Connect With Us</h1>
+    <p>God designed us to grow in faith together, not alone. Scripture reminds us to "devote ourselves to fellowship" (Acts 2:42-47) and "encourage one another and build each other up" (1 Thess 5:11).</p>
+  </div>
+</div>
+
+<!-- WAYS TO CONNECT -->
+<section class="connect-section">
+  <div class="container">
+    <p class="section-label">Find Your Place</p>
+    <h2 class="section-title">Ways to Get Connected</h2>
+    <div class="connect-grid">
+
+      <div class="connect-card reveal-card">
+        <div class="connect-card-icon">🤝</div>
+        <h3 class="connect-card-title">Connect Groups</h3>
+        <p class="connect-card-desc">Life is better in community. Our connect groups meet throughout the week across Batam to study scripture, pray, and do life together. There's a group for every stage of life.</p>
+        <p class="connect-card-time">📅 Sunday after church · Wednesday 6:00 PM</p>
+      </div>
+
+      <div class="connect-card reveal-card">
+        <div class="connect-card-icon">🌸</div>
+        <h3 class="connect-card-title">Women's Bible Study</h3>
+        <p class="connect-card-desc">A place for women to gather around God's Word, grow in faith, and build genuine friendships. Come as you are — all women are welcome.</p>
+        <p class="connect-card-time">📅 Tuesday 8:30 AM · Wednesday 6:30 PM</p>
+      </div>
+
+      <div class="connect-card reveal-card">
+        <div class="connect-card-icon">⚓</div>
+        <h3 class="connect-card-title">Men's Bible Study</h3>
+        <p class="connect-card-desc">Men gathering to study scripture, sharpen one another, and pursue Christ together. Iron sharpens iron — come and be part of a brotherhood built on the Gospel.</p>
+        <p class="connect-card-time">📅 Saturday 10:00 AM</p>
+      </div>
+
+      <div class="connect-card reveal-card">
+        <div class="connect-card-icon">💛</div>
+        <h3 class="connect-card-title">TCK Moms Group</h3>
+        <p class="connect-card-desc">A community for moms raising Third Culture Kids. Share the joys and challenges of expat life, find encouragement, and grow together in faith as you raise your families far from home.</p>
+        <p class="connect-card-time">📅 Monday 6:00 PM · once a month</p>
+      </div>
+
+      <div class="connect-card reveal-card">
+        <div class="connect-card-icon">🌍</div>
+        <h3 class="connect-card-title">FINDA</h3>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section" id="contact-form">
+  <div class="container">
+    <p class="section-label">Reach Out</p>
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="contact-grid">
+
+      <!-- Info -->
+      <div class="contact-info-block reveal-card">
+        <div class="contact-item">
+          <span class="contact-item-icon">📍</span>
+          <div>
+            <p class="contact-item-label">Address</p>
+            <p class="contact-item-value">Blok Imperium near EFATA Christian School<br/>Batam Centre, Riau Islands, Indonesia</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-icon">🕐</span>
+          <div>
+            <p class="contact-item-label">Service Times</p>
+            <p class="contact-item-value">Sunday · 3:30 PM</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-icon">✉️</span>
+          <div>
+            <p class="contact-item-label">Email</p>
+            <p class="contact-item-value">icbcommunications00@gmail.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-icon">📖</span>
+          <div>
+            <p class="contact-item-label">Scripture</p>
+            <p class="contact-item-value" style="font-style:italic;font-size:1rem;color:var(--muted)">"And in you all the families of the earth shall be blessed." — Genesis 12:3</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="reveal-card">
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Full name" required/>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="your@email.com" required/>
+          </div>
+          <div class="form-group">
+            <label for="interest">I'm interested in</label>
+            <select id="interest">
+              <option value="">Select one...</option>
+              <option>Connect Groups</option>
+              <option>Women's Bible Study</option>
+              <option>Men's Bible Study</option>
+              <option>TCK Moms Group</option>
+              <option>FINDA</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell us a little about yourself or how we can help..."></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary" style="width:100%;text-align:center;">Send Message</button>
+          </div>
+          <p id="form-confirm" style="display:none;color:var(--wave);font-size:.9rem;margin-top:.5rem;text-align:center;">
+            Thanks! We'll be in touch soon. 🙏
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <a href="index.html" class="footer-logo"><img src="icb-logo.png" alt="ICB"/></a>
+      <nav class="footer-nav">
+        <a href="index.html#location">Location</a>
+        <a href="index.html#give">Giving</a>
+        <a href="connect.html">Connect</a>
+        <a href="index.html#events">Events</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#connect">Serving</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 International Church of Batam · A Blessing to All Nations</p>
+      <p class="footer-verse">"And in you all the families of the earth shall be blessed." — Genesis 12:3</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+navbar.classList.add('scrolled');
+
+// Hamburger
+const hb = document.getElementById('hamburger');
+const mm = document.getElementById('mobileMenu');
+hb.addEventListener('click', () => {
+  hb.classList.toggle('open');
+  mm.classList.toggle('open');
+  document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
+});
+document.querySelectorAll('.ml').forEach(l => l.addEventListener('click', () => {
+  hb.classList.remove('open'); mm.classList.remove('open');
+  document.body.style.overflow = '';
+}));
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal, .reveal-card').forEach(el => obs.observe(el));
+
+// Smooth scroll for anchor links on this page
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' }); }
+  });
+});
+
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('form-confirm').style.display = 'block';
+  e.target.reset();
+}
+</script>
+</body>
+</html>
